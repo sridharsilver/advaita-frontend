@@ -4,7 +4,10 @@
  * In production, set VITE_API_URL in Cloudflare Pages environment variables
  * (e.g., https://admin.advaitadesigns.com).
  */
-export const API_BASE_URL = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+export const API_BASE_URL = (
+  import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? "https://advaita-admin.pages.dev" : "")
+).replace(/\/$/, "");
 
 /**
  * Helper to construct full API endpoints

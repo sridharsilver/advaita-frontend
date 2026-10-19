@@ -5,7 +5,10 @@ import App from "./App";
 import "./styles.css";
 
 // Intercept relative /api/ calls and route them to VITE_API_URL if configured
-const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+const API_BASE = (
+  import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? "https://advaita-admin.pages.dev" : "")
+).replace(/\/$/, "");
 if (API_BASE) {
   const originalFetch = window.fetch;
   window.fetch = async (input, init) => {
